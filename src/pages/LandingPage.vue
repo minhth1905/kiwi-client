@@ -1,6 +1,6 @@
 <template>
     <div data-spy="scroll" data-target=".navbar" data-offset="50">
-        <navbar></navbar>
+        <navbar :hidden-info="false" :hidden-search="false"></navbar>
         <div id="why" class="container-fluid section-even section">
             <why></why>
             

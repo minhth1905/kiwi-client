@@ -1,7 +1,8 @@
 import Vue from 'vue'
 import Router from 'vue-router'
-// import Hello from '@/components/Hello'
 import LandingPage from '../pages/LandingPage.vue'
+import Login from '../pages/Login.vue'
+import Register from '../pages/Register.vue'
 Vue.use(Router)
 
 export default new Router({
@@ -11,6 +12,16 @@ export default new Router({
       path: '/',
       name: 'LandingPage',
       component: LandingPage
-    }
+    },
+    {
+      path: '/login',
+      name : 'Login',
+      component : Login
+    },
+    {
+      path: '/register',
+      name : 'Register',
+      component : Register
+    },
   ]
 })
