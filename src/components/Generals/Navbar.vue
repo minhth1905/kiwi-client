@@ -7,7 +7,7 @@
         <ul class="nav navbar-nav" v-if="!hiddenInfo">
             <li><a href="#why">Why</a></li>
             <li><a href="#how-work">How it work </span></a></li>
-            <li><a href="#">About us</a></li>
+            <li><a href="#about">About us</a></li>
         </ul>
         <form class="navbar-form navbar-left" v-if="!hiddenSearch">
             <div class="form-group">

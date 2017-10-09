@@ -1,6 +1,6 @@
 <template>
-    <div class="container-fluid">
-        <h1>How it work</h1>
+    <div>
+        <h2>How it work</h2>
         <div class="col-md-3 col-xs-6" v-for="item in listItem" :key="item.id">
             <header>
                 <img :src="item.img" :alt="item.title" class="img-responsive">
