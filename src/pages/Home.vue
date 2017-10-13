@@ -1,7 +1,7 @@
 <template>
     <div>
         <div style="position: fixed; top:0px;background-color: #000;width : 100%;z-index : 9999;height:50px;">
-            <navbar :hidden-search="false"></navbar>
+            <navbar :hidden-search="false" :is-login="isLogin"></navbar>
         </div>
         <div style="height:250px;color:#fff">
             <div id="brand-image">
@@ -9,10 +9,11 @@
             </div>
         </div>        
             <filter-nav></filter-nav>    
-            <div id="view-portfolio">
-                <div class="container">
-                    <div class="col-md-3 col-xs-4" v-for="item in lPortfolio" :key="item.id">
-                        <card  :item="item"  style="background-color:#fff;"></card>
+            <div id="view-portfolio" class="col-xs-12" >
+                <div class="row" style="margin : 25px;">
+                    
+                    <div class="col-md-3 col-xs-4" v-for="item in lPortfolio" :key="item.id" style="margin-bottom : 10px;">
+                        <card  :item="item"  style="background-color:#fff"></card>
                     </div>
                     <infinite-loading @infinite="infiniteHandler"></infinite-loading>
                 </div>                
@@ -30,6 +31,7 @@ export default {
   data() {
       return {
           scrolled: false,
+          isLogin : false,
           lPortfolio: [
               {
                   id : 1,
@@ -70,7 +72,12 @@ export default {
           ]
       }
   },
-
+  beforeMount : function(){
+      let token = localStorage.getItem("token");
+      if(token !== null){
+          this.isLogin = true;
+      }
+  },
   methods: {
     infiniteHandler($state) {
       setTimeout(() => {
@@ -97,7 +104,7 @@ export default {
     }
     #view-portfolio {
         background-color : #f9f9f9;
-        height : 800px;
+        height : 100%;
         padding-top: 30px;
     }  
 </style>

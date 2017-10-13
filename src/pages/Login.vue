@@ -83,7 +83,11 @@ export default {
                 password : this.password
             })
             .then(res => {
-                this.$router.push({name : 'Home'});
+                localStorage.setItem("token", res.data.token);
+                let tmp =this;
+                setTimeout(function() {
+                    tmp.$router.push({name : 'Home'});
+                }, 500);
             })
             .catch(err => {
 
