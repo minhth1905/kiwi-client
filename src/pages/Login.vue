@@ -1,7 +1,7 @@
 <template>
     
-    <div class="container">
-        <navbar :hidden-info="true" :hidden-search="true"></navbar>
+    <div>
+        <navbar :hidden-search="true"></navbar>
         <div id="loginbox" style="margin-top:50px;" class="mainbox col-md-6 col-md-offset-3 col-sm-8 col-sm-offset-2">
             <div class="panel panel-info">
                 <div class="panel-heading">
@@ -15,20 +15,20 @@
 
                     <div style="display:none" id="login-alert" class="alert alert-danger col-sm-12"></div>
 
-                    <form id="loginform" class="form-horizontal" role="form">
+                    <form id="loginform" class="form-horizontal" role="form" @submit.prevent="login">
 
                         <div style="margin-bottom: 25px" class="input-group">
                             <span class="input-group-addon">
                                 <i class="glyphicon glyphicon-user"></i>
                             </span>
-                            <input id="login-username" type="text" class="form-control" name="username" value="" placeholder="username or email">
+                            <input type="text" class="form-control" placeholder="username or email" v-model="username">
                         </div>
 
                         <div style="margin-bottom: 25px" class="input-group">
                             <span class="input-group-addon">
                                 <i class="glyphicon glyphicon-lock"></i>
                             </span>
-                            <input id="login-password" type="password" class="form-control" name="password" placeholder="password">
+                            <input type="password" class="form-control" placeholder="password" v-model="password">
                         </div>
 
                         <div class="input-group">
@@ -43,7 +43,7 @@
                             <!-- Button -->
 
                             <div class="col-sm-12 controls">
-                                <a id="btn-login" href="#" class="btn btn-success btn-block">Login </a>
+                                <button class="btn btn-success btn-block" type="submit">Login</button>
 
                             </div>
                         </div>
@@ -65,9 +65,31 @@
 </template>
 
 <script>
+import config from '../config.js';
+import axios from 'axios';
 import Navbar from '../components/Generals/Navbar'
 export default {
-    components : {Navbar}
+    components : {Navbar},
+    data : function(){
+        return {
+            username : '',
+            password : '',
+        }
+    },
+    methods : {
+        login : function(){
+            axios.post(config.API_LOGIN,{
+                email : this.username,
+                password : this.password
+            })
+            .then(res => {
+                this.$router.push({name : 'Home'});
+            })
+            .catch(err => {
+
+            })
+        }
+    }
 }
 </script>
 

@@ -1,7 +1,7 @@
 <template>
-    <div data-spy="scroll" data-target=".navbar" data-offset="50">
+    <div>
         <navbar :hidden-info="false" :hidden-search="false"></navbar>
-        <div style="height:600px;color:#fff"><branding></branding></div>
+        <div style="height:250px;color:#fff"><branding></branding></div>
         <div id="why" class="container-fluid section-even section">
             <why></why>
         </div>

@@ -1,6 +1,6 @@
 <template>
-    <div class="container">
-        <navbar :hidden-info="true" :hidden-search="true"></navbar>
+    <div>
+        <navbar :hidden-search="true"></navbar>
         <div id="signupbox" class="mainbox col-md-6 col-md-offset-3 col-sm-8 col-sm-offset-2">
             <div class="panel panel-info">
                 <div class="panel-heading">
