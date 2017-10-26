@@ -15,13 +15,22 @@
     <!-- Collect the nav links, forms, and other content for toggling -->
     <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
 
-      <ul class="nav navbar-nav navbar-right" v-if="!checkLogin">
+      <ul class="nav navbar-nav navbar-right" v-if="!checkLogin">      
         <li><router-link to="/register"><span class="glyphicon glyphicon-user"></span> Sign Up</router-link></li>
         <li><router-link to="/login"><span class="glyphicon glyphicon-log-in"></span> Login</router-link></li>
       </ul>
       <ul class="nav navbar-nav navbar-right" v-if="checkLogin">
-        <li><router-link to="/"><span class="glyphicon glyphicon-user"></span> User</router-link></li>
-        <li><a href="javascript:void(0)" @click="logout"><span class="glyphicon glyphicon-user"></span> Logout</a></li>
+        <li class="dropdown">
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">{{user}} <span class="caret"></span></a>
+          <ul class="dropdown-menu">
+            <li><router-link to="/"><span class="glyphicon glyphicon-user"></span> Profile  </router-link></li>
+            <li><router-link to="/"><span class="glyphicon glyphicon-plus"></span> Create Portfolio  </router-link></li>
+            <li role="separator" class="divider"></li>
+            <li><a href="javascript:void(0)" @click="logout"><span class="glyphicon glyphicon-user"></span> Logout</a></li>
+          </ul>
+        </li>          
+        
+        
       </ul>      
       <form class="navbar-form navbar-center" v-if="!hiddenSearch">
         <div class="form-group">
@@ -36,7 +45,7 @@
 
 <script>
 export default {
-    props: ['hiddenInfo','hiddenSearch','isLogin'],
+    props: ['hiddenInfo','hiddenSearch','isLogin','user'],
     data(){
       return {
         checkLogin : null

@@ -21,7 +21,7 @@
                             <span class="input-group-addon">
                                 <i class="glyphicon glyphicon-user"></i>
                             </span>
-                            <input type="text" class="form-control" placeholder="username or email" v-model="username">
+                            <input type="text" class="form-control" placeholder="username or email" v-model="email">
                         </div>
 
                         <div style="margin-bottom: 25px" class="input-group">
@@ -66,32 +66,35 @@
 
 <script>
 import config from '../config.js';
-import axios from 'axios';
 import Navbar from '../components/Generals/Navbar'
+import {Network} from '../services/Network'
 export default {
     components : {Navbar},
     data : function(){
         return {
-            username : '',
+            email : '',
             password : '',
         }
     },
     methods : {
+        successLogin : function(data){
+            localStorage.setItem("token", data.token);
+            localStorage.setItem('user', JSON.stringify(data.user))
+            let tmp =this;
+            setTimeout(function() {
+                tmp.$router.push({name : 'Home'});
+            }, 500);
+        },
+        errLogin : function(data){
+            console.log(data);
+        },
         login : function(){
-            axios.post(config.API_LOGIN,{
-                email : this.username,
+            var params = {
+                email : this.email,
                 password : this.password
-            })
-            .then(res => {
-                localStorage.setItem("token", res.data.token);
-                let tmp =this;
-                setTimeout(function() {
-                    tmp.$router.push({name : 'Home'});
-                }, 500);
-            })
-            .catch(err => {
-
-            })
+            };
+            Network.getDataFromApi(config.API_LOGIN,params,this.successLogin.bind(this),
+                                    this.errLogin.bind(this))
         }
     }
 }

@@ -1,4 +1,4 @@
-const API_ENDPOINT = "https://kiwiserver.herokuapp.com/api/v1"
+const API_ENDPOINT = "http://45.32.21.62:3000/api/v1"
 var config = {
     API_ENDPOINT : API_ENDPOINT,
     API_REGISTER : API_ENDPOINT + "/users/registrations",
