@@ -24,7 +24,7 @@
           <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">{{user}} <span class="caret"></span></a>
           <ul class="dropdown-menu">
             <li><router-link to="/"><span class="glyphicon glyphicon-user"></span> Profile  </router-link></li>
-            <li><router-link to="/"><span class="glyphicon glyphicon-plus"></span> Create Portfolio  </router-link></li>
+            <li><router-link to="/new-portfolio"><span class="glyphicon glyphicon-plus"></span> Create Portfolio  </router-link></li>
             <li role="separator" class="divider"></li>
             <li><a href="javascript:void(0)" @click="logout"><span class="glyphicon glyphicon-user"></span> Logout</a></li>
           </ul>
@@ -45,14 +45,20 @@
 
 <script>
 export default {
-    props: ['hiddenInfo','hiddenSearch','isLogin','user'],
+    props: ['hiddenInfo','hiddenSearch'],
     data(){
       return {
         checkLogin : null
       }    
     },
     beforeMount(){
-      this.checkLogin = this.isLogin;
+      let token = localStorage.getItem("token");
+      if(token !== null){
+          this.checkLogin = true;  
+          let user = JSON.parse(localStorage.getItem("user"));
+          this.user = user.email;
+      }      
+      
     },
     methods: {
       logout : function() {

@@ -1,7 +1,7 @@
 <template>
     <div>
         <div style="position: fixed; top:0px;background-color: #000;width : 100%;z-index : 9999;height:50px;">
-            <navbar :hidden-search="false" :is-login="isLogin" :user="user"></navbar>
+            <navbar :hidden-search="false"></navbar>
         </div>
         <div style="height:250px;color:#fff">
             <div id="brand-image">
@@ -22,6 +22,8 @@
 </template>
 
 <script>
+import {Network} from '../services/Network'
+import config from '../config'
 import InfiniteLoading from 'vue-infinite-loading';
 import FilterNav from '../components/Generals/FilterNav'
 import Navbar from '../components/Generals/Navbar'
@@ -33,59 +35,18 @@ export default {
           scrolled: false,
           isLogin : false,
           user : "",
-          lPortfolio: [
-              {
-                  id : 1,
-                  feature_img : "https://www.disneyclips.com/imagesnewb2/images/baymax.gif",
-                  name : "Baymax Portfolio",
-                  author : "Hiro",
-                  category : "Big Hero 6",
-                  view : 1234,
-                  like : 123
-              },
-              {
-                  id : 1,
-                  feature_img : "https://www.disneyclips.com/imagesnewb2/images/baymax.gif",
-                  name : "Baymax Portfolio",
-                  author : "Hiro",
-                  category : "Big Hero 6",
-                  view : 1234,
-                  like : 123
-              },             
-              {
-                  id : 1,
-                  feature_img : "https://www.disneyclips.com/imagesnewb2/images/baymax.gif",
-                  name : "Baymax Portfolio",
-                  author : "Hiro",
-                  category : "Big Hero 6",
-                  view : 1234,
-                  like : 123
-              },
-              {
-                  id : 1,
-                  feature_img : "https://www.disneyclips.com/imagesnewb2/images/baymax.gif",
-                  name : "Baymax Portfolio",
-                  author : "Hiro",
-                  category : "Big Hero 6",
-                  view : 1234,
-                  like : 123
-              },                            
-          ]
+          lPortfolio: []
       }
   },
   beforeMount : function(){
-      let token = localStorage.getItem("token");
-      if(token !== null){
-          this.isLogin = true;  
-          let user = JSON.parse(localStorage.getItem("user"));
-          this.user = user.email;
-      }
+        Network.getDataFromApi(config.API_PORTFOLIOS,null,function(data){
+            this.lPortfolio = data.data;
+            console.log(data);
+        }.bind(this),null,'GET')  
   },
   methods: {
     infiniteHandler($state) {
       setTimeout(() => {
-        var tmp = JSON.parse(JSON.stringify(this.lPortfolio));
-        this.lPortfolio = this.lPortfolio.concat(tmp); 
         $state.loaded();
       }, 1000);
     },

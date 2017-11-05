@@ -5,6 +5,14 @@ const STATUS_SUCCESS = 1
 export const Network = {
     getDataFromApi(link,params,successCallBack,errorCallBack,method)
     {
+        var headers = "";
+        var token = localStorage.getItem("token");
+        if(token != null){
+            let tmp = "Bearer " + token;      
+            headers = {'Authorization' : tmp};     
+            console.log(headers);
+        }
+ 
         if (typeof successCallBack !== 'function') {
             successCallBack = function () { }
         }
@@ -14,7 +22,8 @@ export const Network = {
         return axios({
             method : !method?'POST':method,
             url : link,
-            data : params
+            data : params,
+            headers : headers
         })
         .then(res => {
             if(res.data.code == STATUS_SUCCESS)
