@@ -2,20 +2,20 @@
     <div>
         <!-- Image feature-->
         <a href="javascript:void(0)">
-            <img :src="item.feature_img" style="width : 100%;"/>
+            <img :src="'http://45.32.21.62:3000'+item.image" style="width : 100%;"/>
         </a>
         <div class="porfolio-detail">
             <!-- Name -->
             <p class="name"><a href="#">{{item.name}}</a></p>
             <!-- Author -->
-            <p><a href="#">{{item.author}}</a></p>
+            <p><a href="#">{{item.owner.full_name}}</a></p>
             <!-- Category -->
-            <p><a href="#">{{item.category}}</a></p>
+            <p><a href="#" v-if="item.category">{{item.category.name}}</a></p>
         </div>
         <hr>
         <div class="action">
-            <span class="view"><img src="../../assets/view.png" />{{item.view}}</span>
-            <span class="like"><img src="../../assets/like.png" /> {{item.like}}</span>
+            <span class="view"><img src="../../assets/view.png" />{{item.view ||  0}}</span>
+            <span class="like"><img src="../../assets/like.png" /> {{item.like || 0}}</span>
             <span class="bookmark" style="float: right"><img src="../../assets/bookmark.png"/></span>
         </div>
     </div>
