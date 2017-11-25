@@ -4,6 +4,7 @@ import Home from '../pages/Home.vue'
 import Login from '../pages/Login.vue'
 import Register from '../pages/Register.vue'
 import AddPortfolio from '../pages/AddPortfolio.vue'
+import ViewPortfolio from '../pages/ViewPortfolio.vue'
 Vue.use(Router)
 
 export default new Router({
@@ -28,6 +29,11 @@ export default new Router({
       path : '/new-portfolio',
       name : 'AddPortfolio',
       component : AddPortfolio
+    },
+    {
+      path : '/portfolio/:id',
+      name : 'ViewPortfolio',
+      component : ViewPortfolio
     }
   ]
 })
