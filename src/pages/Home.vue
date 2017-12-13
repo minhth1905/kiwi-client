@@ -1,23 +1,22 @@
 <template>
     <div>
-        <div style="position: fixed; top:0px;background-color: #000;width : 100%;z-index : 9999;height:50px;">
+        <div style="position: fixed; top: 0px; width: 100%; z-index: 9999">
             <navbar :hidden-search="false"></navbar>
         </div>
-        <div style="height:250px;color:#fff">
+        <div style="height: 300px; color: #fff">
             <div id="brand-image">
-                <h1 style="margin-top :50px;">BrandName</h1>
+                <h1 style="margin-top: 50px; text-align: center;">Creators</h1>
             </div>
-        </div>        
-            <filter-nav></filter-nav>    
+        </div>
+            <filter-nav></filter-nav>
             <div id="view-portfolio" class="col-xs-12" >
-                <div class="row" style="margin : 25px;">
-                    
+                <div class="row" style="margin: 25px;">
                     <div class="col-md-3 col-xs-4" v-for="item in lPortfolio" :key="item.id" style="margin-bottom : 10px;">
                         <card  :item="item"  style="background-color:#fff"></card>
                     </div>
                     <infinite-loading @infinite="infiniteHandler"></infinite-loading>
-                </div>                
-            </div>                                   
+                </div>
+            </div>
     </div>
 </template>
 
@@ -60,15 +59,21 @@ export default {
 .section-odd{background-color: #fff}
 .section-even{background-color: #fff}
     #brand-image{
-        background-image: url('https://9to5mac.files.wordpress.com/2016/06/oled-apple-keyboard-03.jpg');
+        background-image: url('../assets/bg.jpg');
         height: 100%;
-        }
+        background-position: 100px -250px;
+        background-size: cover;
+    }
     #brand-image h1{
-      padding-top : 50px;  
+      padding-top : 120px;
+      font-weight: bolder;
+      font-size: 3em;
+      letter-spacing: 10px;
+      text-transform: uppercase;
     }
     #view-portfolio {
         background-color : #f9f9f9;
         height : 100%;
         padding-top: 30px;
-    }  
+    }
 </style>

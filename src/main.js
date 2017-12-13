@@ -4,7 +4,7 @@ window.jQuery = window.$ = require('jquery/dist/jquery.min')
 import Vue from 'vue'
 import App from './App'
 import router from './router'
-import 'bootstrap/dist/js/bootstrap.min'
+import 'bootstrap/dist/js/bootstrap.bundle.min'
 import 'bootstrap/dist/css/bootstrap.min.css'
 Vue.config.productionTip = false
 

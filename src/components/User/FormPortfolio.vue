@@ -1,5 +1,5 @@
 <template>
-    <div class="col-xs-12 col-md-8 col-md-offset-2">
+    <div class="col-xs-12 col-md-8 offset-md-2">
         <div class="panel">
                     <form id="signupform" class="form-horizontal" @submit.prevent="createPortfolio">
 
@@ -47,7 +47,7 @@
                         </div>                                            
                         <div class="form-group">
                             <!-- Button -->
-                            <div class="col-md-offset-3 col-md-9">
+                            <div class="offset-md-3 col-md-9">
                                 <button id="btn-signup" type="button" class="btn btn-info btn-block" @click="createPortfolio">
                                     <i class="icon-hand-right"></i> Create Portfolio</button>
                             </div>

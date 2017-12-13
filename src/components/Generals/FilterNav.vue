@@ -1,11 +1,11 @@
 <template>
-    <nav class="navbar navbar-default" style="background-color:#fff;margin-bottom : 0;">
-      <ul class="nav navbar-nav" style="float : none; display : inline-block;">
-        <li><a href="#"><span class="glyphicon glyphicon-fire"></span> Newest</a></li>        
-        <li><a href="#"><span class="glyphicon glyphicon-eye-open"></span> Top View</a></li>        
-        <li><a href="#"><span class="glyphicon glyphicon-heart-empty"></span> Top Follow</a></li>
-        <li><a href="#"><span class="glyphicon glyphicon-thumbs-up"></span> Top Like</a></li>        
-      </ul>    
+    <nav class="navbar navbar-expand-sm navbar-light justify-content-center" style="background-color:#fff; margin-bottom : 0;">
+        <ul class="navbar-nav">
+            <li class="nav-item"><a class="nav-link text-primary" href="#"><i class="fa fa-lg fa-fire"></i> Hottest</a></li>
+            <li class="nav-item"><a class="nav-link text-primary" href="#"><i class="fa fa-lg fa-eye"></i> Top View</a></li>
+            <li class="nav-item"><a class="nav-link text-primary" href="#"><i class="fa fa-lg fa-heart-o"></i> Top Follow</a></li>
+            <li class="nav-item"><a class="nav-link text-primary" href="#"><i class="fa fa-lg fa-thumbs-up"></i> Top Like</a></li>
+        </ul>
     </nav>
 </template>
 <script>
@@ -13,7 +13,7 @@
         
     }
 </script>
-<style scoped>   
+<style scoped>
     ul li {
         padding :0 20px;
     }
